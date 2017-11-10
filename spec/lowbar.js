@@ -18,5 +18,12 @@ describe('#identity', () => {
       expect(_.identity(true)).to.equal(true);
       expect(_.identity(null)).to.equal(null);
     });
+    it('returns the same reference as the passed argument', () => {
+      var input = [1, 2, 3];
+      expect(_.identity(input) === input).to.equal(true);
+      
+      var input1 = {name: 'Francis'};
+      expect(_.identity(input1)).to.equal(input1);
+    });
   });
 });
