@@ -30,6 +30,19 @@ describe('#first', () => {
     var input = [3,7,2];
     expect(_.first(input)).to.equal(3)
   })
+  it('returns n elements of an array', function () {
+    var input = [3, 7, 2, 5, 1];
+    var n = 4;
+    expect(_.first(input, n)).to.eql([3,7,2,5]);
+
+    var input1 = [3, 7, 2, 5, 1];
+    var n1 = 2;
+    expect(_.first(input1, n1)).to.eql([3,7]);
+
+    var input2 = [3, 7, 2, 5, 1];
+    var n2 = 5;
+    expect(_.first(input2, n2)).to.eql([3,7,2,5,1]);
+  });
 })
   });
 });
