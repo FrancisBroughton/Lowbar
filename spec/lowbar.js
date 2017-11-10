@@ -9,4 +9,14 @@ describe('_', function () {
   it('is an object', function () {
     expect(_).to.be.an('object');
   });
+
+describe('#identity', () => {
+    it('returns the argument passed to the function', () => {
+      expect(_.identity()).to.equal(undefined);
+      expect(_.identity(1)).to.equal(1);
+      expect(_.identity('a')).to.equal('a');
+      expect(_.identity(true)).to.equal(true);
+      expect(_.identity(null)).to.equal(null);
+    });
+  });
 });
