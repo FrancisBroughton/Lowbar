@@ -1,0 +1,30 @@
+{
+  "name": "lowbar",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "pre:test": "npm run lint",
+    "test": "mocha ./spec/",
+    "lint": "eslint ./",
+    "lint:fix": "npm run lint -- --fix",
+    "precommit": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FrancisBroughton/lowbar.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FrancisBroughton/lowbar/issues"
+  },
+  "homepage": "https://github.com/FrancisBroughton/lowbar#readme",
+  "dependencies": {
+    "chai": "^3.5.0",
+    "eslint": "^3.19.0",
+    "eslint-plugin-react": "^7.4.0",
+    "husky": "^0.13.1",
+    "sinon": "^3.2.1"
+  }
+}
