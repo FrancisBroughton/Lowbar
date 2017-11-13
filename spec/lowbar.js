@@ -51,7 +51,7 @@ describe('#first', () => {
 /////////////////////////////////////////////////////////////////////
 
 describe('#last',() => {
-  it('returns undefined if array or string is not passed in', function () {
+  it('returns undefined if array or string is not passed in', () => {
         expect(_.last({ name: 'Francis' })).to.equal(undefined);
         expect(_.last(0)).to.equal(undefined);
         expect(_.last(NaN)).to.equal(undefined);
@@ -59,21 +59,28 @@ describe('#last',() => {
         expect(_.last(3)).to.equal(undefined);
       })
 
-      it('returns the last element of an array', function () {
-        var input = [1, 2, 3, 4, 5];
+      it('returns the last element of an array', () => {
+        let input = [1, 2, 3, 4, 5];
+        let n = 1
         expect(_.last(input)).to.equal(5);
+        console.log(input)
       });
-      it('returns the nth element from the end of an array', function () {
-        var input = [1, 2, 3, 4, 5];
-        var n = 3;
+      it('returns the nth element from the end of an array', () => {
+        let input = [1, 2, 3, 4, 5];
+        let n = 3;
         expect(_.last(input, n)).to.eql([3,4,5]);
-  
-        var input1 = [3, 7, 2, 5, 1];
-        var n1 = 2;
+        let input1 = [3, 7, 2, 5, 1];
+        let n1 = 2;
         expect(_.last(input1, n1)).to.eql([5, 1]);
       });
       it('returns the last character in a string', () => {
-        expect(_.last("francis")).to.eql('s')
+        let input = 'francis';
+        expect(_.last(input)).to.eql('s')
+      })
+      it('returns the last n characters in a string when a n arguement is given', () => {
+        let input = 'francis';
+        let n = 2
+        expect(_.last(input, n)).to.eql(['i','s']);
       })
 });
 });
