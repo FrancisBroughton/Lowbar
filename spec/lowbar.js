@@ -72,6 +72,9 @@ describe('#last',() => {
         var n1 = 2;
         expect(_.last(input1, n1)).to.eql([5, 1]);
       });
+      it('returns the last character in a string', () => {
+        expect(_.last("francis")).to.eql('s')
+      })
 });
 });
 });
