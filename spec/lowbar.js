@@ -58,6 +58,20 @@ describe('#last',() => {
         expect(_.last(null)).to.equal(undefined);
         expect(_.last(3)).to.equal(undefined);
       })
+
+      it('returns the last element of an array', function () {
+        var input = [1, 2, 3, 4, 5];
+        expect(_.last(input)).to.equal(5);
+      });
+      it('returns the nth element from the end of an array', function () {
+        var input = [1, 2, 3, 4, 5];
+        var n = 3;
+        expect(_.last(input, n)).to.eql([3,4,5]);
+  
+        var input1 = [3, 7, 2, 5, 1];
+        var n1 = 2;
+        expect(_.last(input1, n1)).to.eql([5, 1]);
+      });
 });
 });
 });
