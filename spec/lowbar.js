@@ -24,6 +24,7 @@ describe('#identity', () => {
       var input1 = {name: 'Francis'};
       expect(_.identity(input1)).to.equal(input1);
     });
+    //////////////////////////////////////////////////////
 describe('#first', () => {
   it('returns the first element in an array', () => {
     var input = [3,7,2];
@@ -47,5 +48,16 @@ describe('#first', () => {
     expect(_.first(input)).to.eql("h");
   })
 })
+/////////////////////////////////////////////////////////////////////
+
+describe('#last',() => {
+  it('returns undefined if array or string is not passed in', function () {
+        expect(_.last({ name: 'Francis' })).to.equal(undefined);
+        expect(_.last(0)).to.equal(undefined);
+        expect(_.last(NaN)).to.equal(undefined);
+        expect(_.last(null)).to.equal(undefined);
+        expect(_.last(3)).to.equal(undefined);
+      })
+});
 });
 });
