@@ -1,6 +1,5 @@
 var path = require('path');
 var expect = require('chai').expect;
-
 var _ = require(path.join(__dirname, '..', './lowbar.js'));
 
 describe('_', function () {
@@ -30,7 +29,7 @@ describe('#first', () => {
     var input = [3,7,2];
     expect(_.first(input)).to.equal(3)
   })
-  it('returns n elements of an array', function () {
+  it('returns n elements of an array',() => {
     var input = [3, 7, 2, 5, 1];
     var n = 4;
     expect(_.first(input, n)).to.eql([3,7,2,5]);
@@ -43,6 +42,10 @@ describe('#first', () => {
     var n2 = 5;
     expect(_.first(input2, n2)).to.eql([3,7,2,5,1]);
   });
+  it('returns the first element of a string', () => {
+    let input = "hello";
+    expect(_.first(input)).to.eql("h");
+  })
 })
-  });
+});
 });
