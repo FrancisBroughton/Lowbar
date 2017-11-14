@@ -27,7 +27,15 @@ _.last = function(arr, n = 1) {
     } else {
         return arr.slice(-n);
     }
-}
+  }
 };
 
+_.each = function(list, iteratee, context) {
+  if (Array.isArray(list)) {
+    for (var i = 0; i < list.length; i++) {
+      iteratee(list[i], i, list);
+    }
+    return list;
+  }
+}
 module.exports = _;

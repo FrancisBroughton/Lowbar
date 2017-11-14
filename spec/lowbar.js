@@ -47,11 +47,11 @@ describe('#first', () => {
     let input = "hello";
     expect(_.first(input)).to.eql("h");
   })
-})
+});
 /////////////////////////////////////////////////////////////////////
 
 describe('#last',() => {
-  it('returns undefined if array or string is not passed in', () => {
+      it('returns undefined if array or string is not passed in', () => {
         expect(_.last({ name: 'Francis' })).to.equal(undefined);
         expect(_.last(0)).to.equal(undefined);
         expect(_.last(NaN)).to.equal(undefined);
@@ -82,6 +82,20 @@ describe('#last',() => {
         let n = 2
         expect(_.last(input, n)).to.eql(['i','s']);
       })
+    });
+    /////////////////////////////////////////////////////////////////////////////
+
+describe('#each', () => {
+  it('knows how many iteratees have been passed into the array',() => {
+    let count = 0;
+    function counter () {
+      count++;
+    }
+    _.each(['a','b','c','d','e'], counter);
+    expect(count).to.equal(5);
+  });
+  
 });
-});
+
+  });
 });
