@@ -95,31 +95,31 @@ describe('#each', () => {
       expect(count).to.equal(5);
     });
   it('calls the iteratee passing each element of the array as the first argument', function() {
-    let bucket = [];
-    function argsBucket () {
-      bucket.push(arguments[0]);
-    }
-    _.each(['a','b','c','d','e'], argsBucket);
-    expect(bucket).to.eql(['a','b','c','d','e']);
+      let bucket = [];
+      function argsBucket () {
+        bucket.push(arguments[0]);
+      }
+      _.each(['a','b','c','d','e'], argsBucket);
+      expect(bucket).to.eql(['a','b','c','d','e']);
       });
 
   it('iteratee calls with each character in a string to equal length', ()  => {
-    let count = 0;
-    function counter () {
-      count++
-    }
-    _.each('francis', counter)
-    expect(count).to.equal(7)
-  })
+      let count = 0;
+      function counter () {
+        count++
+      }
+      _.each('francis', counter)
+      expect(count).to.equal(7)
+      })
 
   it('counts the iteratee passed into an object', () => {
-    let count = 0;
-    function counter () {
-      count++
-    }
-    _.each({1:1, 2:2, 3:3}, counter)
-    expect(count).to.equal(3)
-  })
+      let count = 0;
+      function counter () {
+        count++
+      }
+      _.each({1:1, 2:2, 3:3}, counter)
+      expect(count).to.equal(3)
+      })
     });
   });
 });

@@ -30,7 +30,7 @@ _.last = function(arr, n = 1) {
   }
 };
 
-_.each = function(list, iteratee, context) {
+_.each = function(list, iteratee, context = this) {
   if (Array.isArray(list)) {
     for (var i = 0; i < list.length; i++) {
       iteratee(list[i], i, list);
