@@ -103,13 +103,22 @@ describe('#each', () => {
     expect(bucket).to.eql(['a','b','c','d','e']);
       });
 
-  it('iteratee calls with each character in a string', ()  => {
+  it('iteratee calls with each character in a string to equal length', ()  => {
     let count = 0;
     function counter () {
       count++
     }
     _.each('francis', counter)
     expect(count).to.equal(7)
+  })
+
+  it('counts the iteratee passed into an object', () => {
+    let count = 0;
+    function counter () {
+      count++
+    }
+    _.each({1:1, 2:2, 3:3}, counter)
+    expect(count).to.equal(3)
   })
     });
   });
