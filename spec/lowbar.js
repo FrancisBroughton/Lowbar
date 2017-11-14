@@ -94,8 +94,14 @@ describe('#each', () => {
     _.each(['a','b','c','d','e'], counter);
     expect(count).to.equal(5);
   });
-  
+  it('calls the iteratee passing each element of the array as the first argument', function() {
+    let bucket = [];
+    function argsBucket () {
+      bucket.push(arguments[0]);
+    }
+    _.each(['a','b','c','d','e'], argsBucket);
+    expect(bucket).to.eql(['a','b','c','d','e']);
+  });
 });
-
   });
 });
