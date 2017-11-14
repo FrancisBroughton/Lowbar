@@ -87,13 +87,13 @@ describe('#last',() => {
 
 describe('#each', () => {
   it('knows how many iteratees have been passed into the array',() => {
-    let count = 0;
-    function counter () {
-      count++;
-    }
-    _.each(['a','b','c','d','e'], counter);
-    expect(count).to.equal(5);
-  });
+      let count = 0;
+      function counter () {
+        count++;
+      }
+      _.each(['a','b','c','d','e'], counter);
+      expect(count).to.equal(5);
+    });
   it('calls the iteratee passing each element of the array as the first argument', function() {
     let bucket = [];
     function argsBucket () {
@@ -101,7 +101,16 @@ describe('#each', () => {
     }
     _.each(['a','b','c','d','e'], argsBucket);
     expect(bucket).to.eql(['a','b','c','d','e']);
-  });
-});
+      });
+
+  it('iteratee calls with each character in a string', ()  => {
+    let count = 0;
+    function counter () {
+      count++
+    }
+    _.each('francis', counter)
+    expect(count).to.equal(7)
+  })
+    });
   });
 });

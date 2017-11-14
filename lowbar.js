@@ -36,6 +36,12 @@ _.each = function(list, iteratee, context) {
       iteratee(list[i], i, list);
     }
     return list;
+  } 
+  else {
+    for (var key in list) {
+        iteratee(list[key], key, list);
+    }
   }
+  return list;
 }
 module.exports = _;
