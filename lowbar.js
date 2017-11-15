@@ -67,4 +67,17 @@ _.filter = function(arr, predicate, context = this) {
     return newArr; 
 };
 
+_.reject = function (arr, predicate, context = this) {
+  if(!predicate) return arr;
+  let newArr = [];
+  for (let i = 0; i < arr.length; i++) {
+    if (!predicate(arr[i])) {
+      newArr.push(arr[i]);
+    }
+  }
+  return newArr;
+};
+
+
+
 module.exports = _;

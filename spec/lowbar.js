@@ -151,6 +151,11 @@ describe('#filter', () => {
     let func = (function(num) { return num % 2 === 0; });
     expect(_.filter(arr, func)).to.eql([2, 4, 6]);
   }); 
+  it('returns the values that equal true for letters from the list', () => {
+    let arr = ['a','b','c','d','c'];
+    let func = (function(char) { return char === 'c'; });
+    expect(_.filter(arr, func)).to.eql(['c', 'c']);
+});
   it('returns an empty array if an invalid format is given or no item returns true', function () {
     expect(_.filter([1,3,5,7], function (num) {
         return num % 2 === 0;
@@ -162,16 +167,39 @@ describe('#filter', () => {
         return letter === 'n';
     })).to.eql([]);
 });
-  // it('returns the vaues ')
-  it('returns the values that equal true for letters from the list', () => {
-    let arr = ['a','b','c','d','c'];
-    let func = (function(char) { return char === 'c'; });
-    expect(_.filter(arr, func)).to.eql(['c', 'c']);
-});
 it('returns the array if there is no predicate', () => {
   expect(_.filter(['f', 'r', 'a', 'n'])).to.eql(['f', 'r', 'a', 'n']);
 });
 
+describe('#reject', () => {
+it('returns the values that are equal to false for numbers in the list', function () {
+  expect(_.reject([1, 2, 3, 4, 5, 6], (num) => {
+    return num % 2 === 0;
+  })).to.eql([1, 3, 5]);
+  expect(_.reject('francis', function (letter) {
+    return letter === 'n';
+})).to.eql(['f','r','a','c','i','s']);
+}); 
+it('returns the values that equal false for letters from the list', function () {
+  let arr = ['a','b','c','d','c'];
+  let func = (function(char) { return char === 'c'; });
+  expect(_.reject(arr, func)).to.eql(['a','b','d']);
+}); 
+it('returns an empty array if an invalid format is given or no item returns true', function () {
+  expect(_.reject([1,2,3,4,5,6], (num) => {
+      return num % 2 === 0;
+  })).to.eql([1,3,5]);
+  expect(_.reject('hi', (letter) => {
+      return letter === 'f';
+  })).to.eql(['h','i']);
+  expect(_.reject([1, 2, 3, 4, 5, 6], (letter) => {
+      return letter === 'f';
+  })).to.eql([1, 2, 3, 4, 5, 6]);
+});
+it('returns the array if there is no predicate', () => {
+  expect(_.reject(['f', 'r', 'a', 'n'])).to.eql(['f', 'r', 'a', 'n']);
+});
+})
+})
 })
   });
-});
