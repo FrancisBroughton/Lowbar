@@ -94,7 +94,7 @@ describe('#each', () => {
       _.each(['a','b','c','d','e'], counter);
       expect(count).to.equal(5);
     });
-  it('calls the iteratee passing each element of the array as the first argument', function() {
+  it('calls the iteratee passing each element of the array as the first argument', () => {
       let bucket = [];
       function argsBucket () {
         bucket.push(arguments[0]);
@@ -121,5 +121,57 @@ describe('#each', () => {
       expect(count).to.equal(3)
       })
     });
+
+    /////////////////////////////////////////////////////
+
+// describe('#indexOf', () => {
+//   it('returns -1 if value cannot be found in the array', function () {
+//     let arr = ['a','b','c','d','e'];
+//     let n = 'f';
+//     let expected = -1;
+//     expect(_.indexOf(arr, n)).to.equal(expected);
+//   });
+//   it('returns the index of which the value can be found in the array', function () {
+//     let arr = ['a','b','c','d','e'];
+//     let n = 'b';
+//     let expected = 1;
+//     expect(_.indexOf(arr, n)).to.equal(expected);
+//   });
+//   it('searches for the index position of the passed value from the specified number if passed as a third arg', function () {
+//     expect(_.indexOf([7, 8, 9, 10, 11, 12, 13, 14, 15], 11, 2)).to.equal(4);
+//     expect(_.indexOf([4, 2, 9, 7, 1, 5, 6, 3, 8], 7, 5)).to.equal(-1);
+//     expect(_.indexOf('string', 'n', 2)).to.equal(4);
+//     expect(_.indexOf('string', 'g', 3)).to.equal(5);
+// });
+// });
+
+describe('#filter', () => {
+  it('returns the values that equal true for numbers from the list', () => {
+    let arr = [1, 2, 3, 4, 5, 6];
+    let func = (function(num) { return num % 2 === 0; });
+    expect(_.filter(arr, func)).to.eql([2, 4, 6]);
+  }); 
+  it('returns an empty array if an invalid format is given or no item returns true', function () {
+    expect(_.filter([1,3,5,7], function (num) {
+        return num % 2 === 0;
+    })).to.eql([]);
+    expect(_.filter('hi', function (letter) {
+        return letter === 'n';
+    })).to.eql([]);
+    expect(_.filter([1, 2, 3, 4, 5, 6], function (letter) {
+        return letter === 'n';
+    })).to.eql([]);
+});
+  // it('returns the vaues ')
+  it('returns the values that equal true for letters from the list', () => {
+    let arr = ['a','b','c','d','c'];
+    let func = (function(char) { return char === 'c'; });
+    expect(_.filter(arr, func)).to.eql(['c', 'c']);
+});
+it('returns the array if there is no predicate', () => {
+  expect(_.filter(['f', 'r', 'a', 'n'])).to.eql(['f', 'r', 'a', 'n']);
+});
+
+})
   });
 });
