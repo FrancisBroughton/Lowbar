@@ -78,6 +78,20 @@ _.reject = function (arr, predicate, context = this) {
   return newArr;
 };
 
+_.uniq = function (list, isSorted) {
+  let listNew = [];
+  if (Array.isArray(list) || typeof list === 'string') {
+      for (var i = 0; i < list.length; i++) {
+          if (listNew.indexOf(list[i]) === -1) 
+          listNew.push(list[i]);
+      }
+      return listNew;
+  }
+  return listNew;
+}
+
+
+
 
 
 module.exports = _;

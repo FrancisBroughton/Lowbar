@@ -171,6 +171,7 @@ it('returns the array if there is no predicate', () => {
   expect(_.filter(['f', 'r', 'a', 'n'])).to.eql(['f', 'r', 'a', 'n']);
 });
 
+
 describe('#reject', () => {
 it('returns the values that are equal to false for numbers in the list', function () {
   expect(_.reject([1, 2, 3, 4, 5, 6], (num) => {
@@ -199,7 +200,22 @@ it('returns an empty array if an invalid format is given or no item returns true
 it('returns the array if there is no predicate', () => {
   expect(_.reject(['f', 'r', 'a', 'n'])).to.eql(['f', 'r', 'a', 'n']);
 });
-})
-})
-})
+
+
+describe('#uniq', () => {
+  it('returns an empty array if arguemnet passed is not a valid format', () => {
+    expect(_.uniq(665)).to.eql([]);
+    expect(_.uniq({})).to.eql([]);
+    expect(_.uniq(true)).to.eql([]);
+    expect(_.uniq('')).to.eql([]);
   });
+  it('returns a new array of unique items from a passed array or string', function () {
+    expect(_.uniq([1,3,4,1,2,2,4,3,5])).to.eql([1,3,4,2,5]);
+    expect(_.uniq('ffrraanncciiss')).to.eql(['f','r','a','n','c','i','s']);
+  });
+
+  })
+})
+})
+})
+});
