@@ -213,8 +213,12 @@ describe('#uniq', () => {
     expect(_.uniq([1,3,4,1,2,2,4,3,5])).to.eql([1,3,4,2,5]);
     expect(_.uniq('ffrraanncciiss')).to.eql(['f','r','a','n','c','i','s']);
   });
-
+  });
+describe('_.map', () => {
+  it('returns an empty object if first argument itsnt a array or object', () => {
+    expect(_.map('francis')).to.eql([]);
   })
+})
 })
 })
 })

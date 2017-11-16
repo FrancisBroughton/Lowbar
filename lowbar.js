@@ -90,6 +90,25 @@ _.uniq = function (list, isSorted) {
   return listNew;
 }
 
+_.map = function (list,iteratee) {
+  let result = [];
+  for (let i = 0; i < arr.length; i++) {
+   result.push(func(arr[i], i, arr));
+  }
+return result;
+};
+
+_.map = function(list, iteratee) {
+  var result = [];
+  if(!Array.isArray(list) || typeof list !== 'object') return [];
+  if (Array.isArray(list)) {
+    for (let i = 0; i < list.length; i++) {
+      result.push(iteratee(list[i]));
+    }
+  return result;
+};
+};
+
 
 
 
