@@ -214,9 +214,10 @@ describe('#uniq', () => {
     expect(_.uniq('ffrraanncciiss')).to.eql(['f','r','a','n','c','i','s']);
   });
   });
+
 describe('_.map', () => {
   it('returns an empty object if first argument it not a valid input', () => {
-    expect(_.map('francis')).to.eql([]);
+    expect(_.map(false)).to.eql([]);
     expect(_.map(135465)).to.eql([]);
   })
   it('returns a modified array', () => {
@@ -225,8 +226,21 @@ describe('_.map', () => {
     let expected = [3,6,9];
     expect(_.map(list, func)).to.eql(expected);
   });
-})
-})
-})
-}) 
+  it('returns a modified object', () => {
+    let obj = {one: 1, two: 2, three: 3} 
+    let func = (function(num) { return num * 3; })
+    let expected = [3,6,9]
+    expect(_.map(obj, func)).to.eql(expected);
+  })
+//   it('returns a modified string', () => {
+//     let input = ['cat', 'dog','fish'];
+//     let func = (function(add) {return 'a ' + input })
+//     let expected = ['a cat', 'a dog', 'a fish'];
+//     expect(_.map(input, func)).to.eql(expected)
+// });
+});
+
+});
+});
+});
 });

@@ -100,14 +100,34 @@ return result;
 
 _.map = function(list, iteratee) {
   var result = [];
-  if(!Array.isArray(list) || typeof list !== 'object') return [];
   if (Array.isArray(list)) {
     for (let i = 0; i < list.length; i++) {
       result.push(iteratee(list[i]));
     }
+    return result;
+   } 
+   if(typeof list === 'object') {
+   for (let key in list) {
+   result.push(iteratee(list[key]));
+  }
   return result;
+}
+else {
+   return [];
+ }
+}
+
+
+
+_.contains = function(collection, target) {
+  return _.reduce(collection, function(wasFound, item) {
+    if (wasFound) {
+      return true;
+    }
+    return item === target;
+  }, false);
 };
-};
+
 
 
 
