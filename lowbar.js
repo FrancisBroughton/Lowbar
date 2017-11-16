@@ -117,17 +117,21 @@ else {
  }
 }
 
-
-
-_.contains = function(collection, target) {
-  return _.reduce(collection, function(wasFound, item) {
-    if (wasFound) {
-      return true;
+_.pluck = function(list, propName) {
+  if (Array.isArray(list) ) {
+    return _.map(list, function(item) {
+      return item[propName];
+    });
+  }else if (typeof list === 'string') {
+      var arr = [];
+      _.each(list.split(''), function() {
+        arr.push(undefined);
+      });
+      return arr;
     }
-    return item === target;
-  }, false);
-};
-
+    return [];
+  }
+ 
 
 
 

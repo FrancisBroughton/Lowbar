@@ -240,6 +240,20 @@ describe('_.map', () => {
 // });
 });
 
+describe('#pluck', () => {
+  it('For an array of objects, a array of object key values will be returned', function () {
+    expect(_.pluck([{a:1}, {a:3}, {a:4}], 'a')).to.eql([1,3,4]);
+    expect(_.pluck([[1,2,3], [1,2,3], [1,2,3]], 2)).to.eql([3,3,3]);    
+    expect(_.pluck([{a:1, b:3}, {a:3, c:4}, {a:4, d:6}], 'a')).to.eql([1,3,4]);      
+  });
+  it('it returns false for invalid inputs', function () {
+    expect(_.pluck([{a:1}, {a:3}, {a:4}], 'b')).to.eql([undefined, undefined, undefined]);
+    expect(_.pluck('hello',5)).to.eql([undefined, undefined, undefined, undefined, undefined]);
+    expect(_.pluck(NaN, 0)).to.eql([]);
+    expect(_.pluck(undefined,undefined)).to.eql([]);
+});
+});
+
 });
 });
 });
