@@ -215,11 +215,18 @@ describe('#uniq', () => {
   });
   });
 describe('_.map', () => {
-  it('returns an empty object if first argument itsnt a array or object', () => {
+  it('returns an empty object if first argument it not a valid input', () => {
     expect(_.map('francis')).to.eql([]);
+    expect(_.map(135465)).to.eql([]);
   })
+  it('returns a modified array', () => {
+    let list = [1,2,3];
+    let func = (function(num) {return num * 3; });
+    let expected = [3,6,9];
+    expect(_.map(list, func)).to.eql(expected);
+  });
 })
 })
 })
-})
+}) 
 });
