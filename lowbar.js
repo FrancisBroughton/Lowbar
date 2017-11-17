@@ -154,14 +154,14 @@ _.pluck = function(list, propName) {
       }
   };
 
-  _.reduce = function (list, iteratee, memo = 0) {
-    for (let i = 0; i < list.length; i++) {
-      memo = iteratee(memo, list[i]);
-    }
-  
+  _.reduce =(list, iteratee, memo = 0) => {
+    _.each(list, (item, i, list) => {
+      if (memo === undefined) {
+        memo = item;
+      } else memo = iteratee(memo, item, i, list);
+    });
     return memo;
-  }
-
+  };
 
 
 
