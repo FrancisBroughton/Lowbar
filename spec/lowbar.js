@@ -296,10 +296,33 @@ describe('#contains', () => {
 it('starts the search fromIndex and returns either true of false for string, object and array', () => {
   expect(_.contains([1,2,3,4,5],1, 1)).to.equal(false)
   expect(_.contains([1,2,3,4,5],5, 3)).to.equal(true)
-
 })
+it('returns false if not given a target value', () => {
+  expect(_.contains('abc')).to.equal(false);
+  expect(_.contains([1,2,3])).to.equal(false)
+});
 });
 
+describe('#reduce', () => {
+  it('Checks if function works on numeric array', function () {
+    var input = [1, 2, 3];
+    var actual = _.reduce(input, function (memo, num) { return memo + num; }, 0);
+    var expected = 6;
+    expect(actual).to.equal(expected);
+  });
+  it('Checks if function works on numeric array with non-zero memo', function () {
+    var input = [1, 2, 3];
+    var actual = _.reduce(input, function (memo, num) { return memo + num; }, -3);
+    var expected = 3;
+    expect(actual).to.equal(expected);
+  });
+  it('Checks if function works on numeric array with another iteratee', function () {
+    var input = [1, 2, 3];
+    var actual = _.reduce(input, function (memo, num) { return memo * num * num; }, 1);
+    var expected = 36;
+    expect(actual).to.equal(expected);
+  });
+});
 
 });
 });

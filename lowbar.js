@@ -154,6 +154,15 @@ _.pluck = function(list, propName) {
       }
   };
 
+  _.reduce = function (list, iteratee, memo = 0) {
+    for (let i = 0; i < list.length; i++) {
+      memo = iteratee(memo, list[i]);
+    }
+  
+    return memo;
+  }
+
+
 
 
 module.exports = _;
