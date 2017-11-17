@@ -267,6 +267,18 @@ describe('#contains', () => {
     let expected = false;
     expect(_.contains(arr, value)).to.equal(expected);
 });
+  it('returns true if the value is present in a string', () => {
+    let str = "francis"
+    let value = 'a'
+    let expected = true;
+    expect(_.contains(str, value)).to.equal(expected)
+  })
+  it('returns false if the value is not present in a string', () => {
+    let str = "francis"
+    let value = 'x'
+    let expected = false;
+   expect(_.contains(str, value)).to.equal(expected)
+  })
 });
 
 

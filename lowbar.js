@@ -138,6 +138,9 @@ _.pluck = function(list, propName) {
         for (let i = 0; i < input.length; i++) {
           if (input[i] === value) return true;
         }
+        for (let key in input) {
+          if (input[key] === value) return true;
+        }
       return false;
   };
 
