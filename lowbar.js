@@ -133,15 +133,25 @@ _.pluck = function(list, propName) {
     return [];
   }
 
-  _.contains = (input, value) => {
-    //if (!Array.isArray(input)) {
-        for (let i = 0; i < input.length; i++) {
-          if (input[i] === value) return true;
-        }
+  _.contains = (input, value, fromIndex) => {
+ 
+      if(Array.isArray(input) || typeof input === "string") {
+        for (let i = fromIndex; i < input.length; i++) {
+          if (input[i] === value) {
+            return true;
+          } 
+        }  return false;
+      }  
+
+      if(typeof input === 'object') {
         for (let key in input) {
-          if (input[key] === value) return true;
-        }
-      return false;
+          if (input[key] === value) {
+            return true;
+          } 
+        }  return false;
+      } else {
+        return false;
+      }
   };
 
 

@@ -256,41 +256,48 @@ describe('#pluck', () => {
 
 describe('#contains', () => {
   it('returns true if the value present in the array',() => {
-      let arr = [1,2,3,4,5];
+      let input = [1,2,3,4,5];
       let value = 3;
-      let expected = true;
-      expect(_.contains(arr, value)).to.equal(expected);
+      let fromIndex = 1;
+      expect(_.contains(input, value, fromIndex)).to.equal(true);
   });
+
   it('returns false if the value is not present in the array',() => {
     let arr = [1,2,3,4,5];
     let value = 7;
-    let expected = false;
-    expect(_.contains(arr, value)).to.equal(expected);
+    let fromIndex = 1
+    expect(_.contains(arr, value, fromIndex)).to.equal(false);
 });
+
   it('returns true if the value is present in a string', () => {
     let str = "francis"
     let value = 'a'
-    let expected = true;
-    expect(_.contains(str, value)).to.equal(expected)
+    let fromIndex = 1
+    expect(_.contains(str, value,fromIndex)).to.equal(true)
   })
   it('returns false if the value is not present in a string', () => {
     let str = "francis"
     let value = 'x'
-    let expected = false;
-   expect(_.contains(str, value)).to.equal(expected)
+    let fromIndex = 1
+   expect(_.contains(str, value, fromIndex)).to.equal(false)
   })
   it('returns true of the value is present in an object', () => {
     let obj ={1:"f", 2:"r", 3:'a', 4:'n'}
     let value = "f"
-    let expected = true;
-    expect(_.contains(obj, value)).to.equal(expected)
+    let fromIndex = 1
+    expect(_.contains(obj, value, fromIndex)).to.equal(true)
   })
   it('returns true of the value is present in an object', () => {
     let obj ={1:"f", 2:"r", 3:'a', 4:'n'}
     let value = "c"
-    let expected = false;
-    expect(_.contains(obj, value)).to.equal(expected)
+    let fromIndex = 1
+    expect(_.contains(obj, value, fromIndex)).to.equal(false)
 });
+it('starts the search fromIndex and returns either true of false for string, object and array', () => {
+  expect(_.contains([1,2,3,4,5],1, 1)).to.equal(false)
+  expect(_.contains([1,2,3,4,5],5, 3)).to.equal(true)
+
+})
 });
 
 
