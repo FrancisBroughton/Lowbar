@@ -279,8 +279,19 @@ describe('#contains', () => {
     let expected = false;
    expect(_.contains(str, value)).to.equal(expected)
   })
+  it('returns true of the value is present in an object', () => {
+    let obj ={1:"f", 2:"r", 3:'a', 4:'n'}
+    let value = "f"
+    let expected = true;
+    expect(_.contains(obj, value)).to.equal(expected)
+  })
+  it('returns true of the value is present in an object', () => {
+    let obj ={1:"f", 2:"r", 3:'a', 4:'n'}
+    let value = "c"
+    let expected = false;
+    expect(_.contains(obj, value)).to.equal(expected)
 });
-
+});
 
 
 });
