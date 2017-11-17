@@ -57,6 +57,7 @@ _.each = function(list, iteratee, context = this) {
 //   return -1
 //   }
 
+
 _.filter = function(arr, predicate, context = this) {
   if(!predicate) return arr;
   let newArr = [];
@@ -131,9 +132,14 @@ _.pluck = function(list, propName) {
     }
     return [];
   }
- 
 
-
+  _.contains = (input, value) => {
+    //if (!Array.isArray(input)) {
+        for (let i = 0; i < input.length; i++) {
+          if (input[i] === value) return true;
+        }
+      return false;
+  };
 
 
 

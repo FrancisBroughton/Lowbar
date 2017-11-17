@@ -246,13 +246,30 @@ describe('#pluck', () => {
     expect(_.pluck([[1,2,3], [1,2,3], [1,2,3]], 2)).to.eql([3,3,3]);    
     expect(_.pluck([{a:1, b:3}, {a:3, c:4}, {a:4, d:6}], 'a')).to.eql([1,3,4]);      
   });
-  it('it returns false for invalid inputs', function () {
+  it('returns false for invalid inputs', function () {
     expect(_.pluck([{a:1}, {a:3}, {a:4}], 'b')).to.eql([undefined, undefined, undefined]);
     expect(_.pluck('hello',5)).to.eql([undefined, undefined, undefined, undefined, undefined]);
     expect(_.pluck(NaN, 0)).to.eql([]);
     expect(_.pluck(undefined,undefined)).to.eql([]);
+  });
+});
+
+describe('#contains', () => {
+  it('returns true if the value present in the array',() => {
+      let arr = [1,2,3,4,5];
+      let value = 3;
+      let expected = true;
+      expect(_.contains(arr, value)).to.equal(expected);
+  });
+  it('returns false if the value is not present in the array',() => {
+    let arr = [1,2,3,4,5];
+    let value = 7;
+    let expected = false;
+    expect(_.contains(arr, value)).to.equal(expected);
 });
 });
+
+
 
 });
 });
