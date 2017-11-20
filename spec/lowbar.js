@@ -311,17 +311,31 @@ describe('#reduce', () => {
     expect(actual).to.equal(expected);
   });
   it('Checks if function works on numeric array with non-zero memo', function () {
-    var input = [1, 2, 3];
-    var actual = _.reduce(input, function (memo, num) { return memo + num; }, -3);
-    var expected = 3;
+    let input = [1, 2, 3];
+    let actual = _.reduce(input, function (memo, num) { return memo + num; }, -3);
+    let expected = 3;
     expect(actual).to.equal(expected);
   });
   it('Checks if function works on numeric array with another iteratee', function () {
-    var input = [1, 2, 3];
-    var actual = _.reduce(input, function (memo, num) { return memo * num * num; }, 1);
-    var expected = 36;
+    let input = [1, 2, 3];
+    let actual = _.reduce(input, function (memo, num) { return memo * num * num; }, 1);
+    let expected = 36;
     expect(actual).to.equal(expected);
   });
+  it('returns a single numerical value for an object', function () { 
+    let input = {a: 5, b: 10, c: 15};
+    let actual = _.reduce(input, function (memo, num) { return memo + num
+    let expected = 30
+    expect(_.reduce(actual).to.equal(expected));
+  })
+  it('returns a single character value for an object', function () { 
+    let input = { 1: 'f', 2: 'r', 3: 'a', 4:'n'};
+    let actual = _.reduce(input, function (memo, num) { return memo + num
+    let expected = 'fran'
+    expect(_.reduce(actual).to.equal(expected));
+  });
+});
+});
 });
 
 });
