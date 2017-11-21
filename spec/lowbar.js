@@ -335,10 +335,58 @@ describe('#reduce', () => {
     expect(_.reduce(actual).to.equal(expected));
   });
 });
+//////////////////
+describe('#every', () => {
+  it('returns true if not given a valid list', () => {
+    expect(_.every()).to.equal(true);
+    expect(_.every(2)).to.equal(true);
+    expect(_.every('francis')).to.equal(true);
+    expect(_.every(['francis'])).to.equal(true);
+    expect(_.every({0:'francis'})).to.equal(true);
+});
+it('returns true if all items in array passes the predicate', () => {
+  const list = [ 2, 4, 6, 8 ];
+  const predicate = (item) => item % 2 === 0;
+  let expected = true
+  expect(_.every(list, predicate)).to.equal(expected);
+});
+it('returns false if one item in array passes the predicate', () => {
+  const list = [ 1,2, 4, 6, 8 ];
+  const predicate = (item) => item % 2 === 0;
+  let expected = false
+  expect(_.every(list, predicate)).to.equal(expected);
+});
+it('returns true if all characters in a string passes the predicate', () => {
+  const list = 'francis';
+  const predicate = ((character) => character === character.toLowerCase());
+  let expected = true
+  expect(_.every(list, predicate)).to.equal(expected);
+});
+it('returns false if one characters in a string fails the predicate', () => {
+  const list = 'FrAnCis';
+  const predicate = ((character) => character === character.toLowerCase());
+  let expected = false
+  expect(_.every(list, predicate)).to.equal(false);
+});
+it('returns true if every item in an object passes the predicate', () => {
+  const list = { 1: 2, 2: 4, 3: 6, 4: 8 };
+  const predicate = (item) => item % 2 === 0;
+  let expected = true
+  expect(_.every(list, predicate)).to.equal(expected);
+});
+it('returns false if empty predicate', () => {
+  expect(_.every([1, 2, 3], () => { })).to.be.false;
+});
+it('returns true if no predicate argument',() => {
+  expect(_.every([1, 2, 3])).to.be.true;
 });
 });
 
 });
 });
 });
+
 });
+});
+});
+

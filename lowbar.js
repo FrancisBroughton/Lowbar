@@ -163,6 +163,14 @@ _.pluck = function(list, propName) {
     return memo;
   };
 
+  _.every = function (list, predicate = _.identity, context) {
+    list = list || [];
+    for (var i = 0; i < list.length; i++) {
+      if (!predicate.call(context, list[i])) return false;
+    }
+    return true;
+  };
+
 
 
 module.exports = _;
