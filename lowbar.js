@@ -179,6 +179,10 @@ _.pluck = function(list, propName) {
     return false;
   };
 
+  _.extend = function(destination, source) {
+    return Object.assign({}, destination, source);
+  };
+
 
 
 module.exports = _;

@@ -422,7 +422,34 @@ describe('#some', () => {
     expect(_.every([1, 2, 3])).to.be.true;
   });
   });
+///////////////////
+describe('#extend', () => {
+  it('returns an object when passed additional object arguement', () => {
+    let inputObj = {};
+    let additionalObj = { a: 1, b: 2, c: 3};
+    let expected = { a: 1, b: 2, c: 3 };
+    expect(_.extend(inputObj, additionalObj)).to.eql(expected); 
+})
+it('returns one object when pass an extra object', () => {
+  let inputObj = {firsName:'francis'}
+  let additionalObj = {surname: 'broughton', age: 28}
+  let expected = {firsName:'francis', surname: 'broughton', age: 28}
+  expect(_.extend(inputObj, additionalObj)).to.eql(expected);
+})
+it('returns one object with no duplicates when passed another object', () => {
+  let inputObj = {a:'F', b:'R', c:'A'};
+  let additionalObj = {c:'N', d:'C', e:'I', f:'S'};
+  let expected = {a:'F', b:'R', c:'N', d:'C', e:'I', f:'S'};
+  expect(_.extend(inputObj, additionalObj)).to.eql(expected);
+})
+it('doesnt add a non object to the destination', () => {
+    expect(_.extend({name: 'Francis'},{surname: 'broughton'}, 23)).to.eql({name: 'Francis',surname: 'broughton'});
 
+    expect(_.extend({name: 'Francis'},{surname: 'broughton'}, 'how old??')).to.eql({name: 'Francis',surname: 'broughton'}); 
+
+    expect(_.extend({name: 'Francis'},{surname: 'broughton'}, [11])).to.eql({name: 'Francis',surname: 'broughton'}); 
+});
+});
 
 })
 })
