@@ -450,13 +450,46 @@ it('doesnt add a non object to the destination', () => {
     expect(_.extend({name: 'Francis'},{surname: 'broughton'}, [11])).to.eql({name: 'Francis',surname: 'broughton'}); 
 });
 });
+///////////////////////
+describe('#default', () => {
+  it('returns an object when passed additional object arguement', () => {
+      let inputObj = {};
+      let additionalObj = { a: 1, b: 2, c: 3};
+      let expected = { a: 1, b: 2, c: 3 };
+      expect(_.default(inputObj, additionalObj)).to.eql(expected); 
+  });
+  it('returns one object when pass an extra object', () => {
+    let inputObj = {firsName:'francis'}
+    let additionalObj = {surname: 'broughton', age: 28}
+    let expected = {firsName:'francis', surname: 'broughton', age: 28}
+    expect(_.default(inputObj, additionalObj)).to.eql(expected);
+  })
+  it('returns one object with no duplicates when passed another object', () => {
+    let inputObj = {a:'F', b:'R', c:'A'};
+    let additionalObj = {c:'N', d:'C', e:'I', f:'S'};
+    let expected = {a:'F', b:'R', c:'A', d:'C', e:'I', f:'S'};
+    expect(_.default(inputObj, additionalObj)).to.eql(expected)
+  })
+  it('returns an object with an undefined properties filled in with the first value in the following default objects', () => {
+    let iceCream = {flavor: 'chocolate'};
+    expect(_.default(iceCream, {flavor: 'vanilla', sprinkles: 'lots'})).to.eql({flavor: 'chocolate', sprinkles: 'lots'});
+});
+  it('doesnt add a non object to the destination', () => {
+    expect(_.extend({name: 'Francis'},{surname: 'broughton'}, 23)).to.eql({name: 'Francis',surname: 'broughton'});
+
+    expect(_.extend({name: 'Francis'},{surname: 'broughton'}, 'how old??')).to.eql({name: 'Francis',surname: 'broughton'}); 
+
+    expect(_.extend({name: 'Francis'},{surname: 'broughton'}, [11])).to.eql({name: 'Francis',surname: 'broughton'}); 
+});
+});
+})
+
+
+})
 
 })
 })
+})
 
 });
-});
-});
-});
-
 

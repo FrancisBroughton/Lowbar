@@ -183,6 +183,10 @@ _.pluck = function(list, propName) {
     return Object.assign({}, destination, source);
   };
 
+  _.default = function(object, defaults) {
+    return Object.assign({}, defaults, object);
+  };
+
 
 
 module.exports = _;
