@@ -345,32 +345,32 @@ describe('#every', () => {
     expect(_.every({0:'francis'})).to.equal(true);
 });
 it('returns true if all items in array passes the predicate', () => {
-  const list = [ 2, 4, 6, 8 ];
-  const predicate = (item) => item % 2 === 0;
+  let list = [ 2, 4, 6, 8 ];
+  let predicate = (item) => item % 2 === 0;
   let expected = true
   expect(_.every(list, predicate)).to.equal(expected);
 });
 it('returns false if one item in array passes the predicate', () => {
-  const list = [ 1,2, 4, 6, 8 ];
-  const predicate = (item) => item % 2 === 0;
+  let list = [ 1,2, 4, 6, 8 ];
+  let predicate = (item) => item % 2 === 0;
   let expected = false
   expect(_.every(list, predicate)).to.equal(expected);
 });
 it('returns true if all characters in a string passes the predicate', () => {
-  const list = 'francis';
-  const predicate = ((character) => character === character.toLowerCase());
+  let list = 'francis';
+  let predicate = ((character) => character === character.toLowerCase());
   let expected = true
   expect(_.every(list, predicate)).to.equal(expected);
 });
 it('returns false if one characters in a string fails the predicate', () => {
-  const list = 'FrAnCis';
-  const predicate = ((character) => character === character.toLowerCase());
+  let list = 'FrAnCis';
+  let predicate = ((character) => character === character.toLowerCase());
   let expected = false
   expect(_.every(list, predicate)).to.equal(false);
 });
 it('returns true if every item in an object passes the predicate', () => {
-  const list = { 1: 2, 2: 4, 3: 6, 4: 8 };
-  const predicate = (item) => item % 2 === 0;
+  let list = { 1: 2, 2: 4, 3: 6, 4: 8 };
+  let predicate = (item) => item % 2 === 0;
   let expected = true
   expect(_.every(list, predicate)).to.equal(expected);
 });
@@ -382,11 +382,54 @@ it('returns true if no predicate argument',() => {
 });
 });
 
-});
-});
-});
+describe('#some', () => {
+  it('returns true if an item in array passes the predicate', () => {
+    let list = [ 1, 2, 5, 7, 9];
+    let predicate = (item) => item % 2 === 0;
+    let expected = true
+    expect(_.some(list, predicate)).to.equal(expected);
+  });
+
+  it('returns false if all items in array passes the predicate', () => {
+    let list = [1,3, 5, 7 ];
+    let predicate = (item) => item % 2 === 0;
+    let expected = false
+    expect(_.some(list, predicate)).to.equal(expected);
+  });
+
+  it('returns true if any characters in a string passes the predicate', () => {
+    let list = 'FRANCIs';
+    let predicate = ((character) => character === character.toLowerCase());
+    let expected = true
+    expect(_.some(list, predicate)).to.equal(expected);
+  });
+  it('returns false if no characters in a string fails the predicate', () => {
+    let list = 'FRANCIS';
+    let predicate = ((character) => character === character.toLowerCase());
+    let expected = false
+    expect(_.every(list, predicate)).to.equal(false);
+  });
+  it('returns true if an item in an object passes the predicate', () => {
+    let list = { a: 1, b: 3, c: 6, d: 7};
+    let predicate = (item) => item % 2 === 0;
+    let expected = true
+    expect(_.every(list, predicate)).to.equal(expected);
+  });
+  it('returns false if empty predicate', () => {
+    expect(_.every([1, 2, 3], () => { })).to.be.false;
+  });
+  it('returns true if no predicate argument',() => {
+    expect(_.every([1, 2, 3])).to.be.true;
+  });
+  });
+
+
+})
+})
 
 });
 });
 });
+});
+
 

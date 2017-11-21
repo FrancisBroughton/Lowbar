@@ -171,6 +171,14 @@ _.pluck = function(list, propName) {
     return true;
   };
 
+  _.some = function (list, predicate = _.identity, context) {
+    list = list || [];
+    for (var i = 0; i < list.length; i++) {
+      if (predicate.call(context, list[i])) return true;
+    }
+    return false;
+  };
+
 
 
 module.exports = _;
