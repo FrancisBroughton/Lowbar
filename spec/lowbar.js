@@ -484,11 +484,11 @@ describe('#default', () => {
 });
 });
 ///////////////////////
-describe('#once', function () {
-  it('is a function', function () {
+describe('#once', () => {
+  it('is a function', () => {
     expect(_.once).to.be.a('function');
   });
-  it('only calls the function once', function() {
+  it('only calls the function once', () => {
     let spy = sinon.spy();
     var hi = _.once(spy);
     hi;
@@ -497,11 +497,11 @@ describe('#once', function () {
   });
 });
 
-describe('#negate', function () {
-  it('is a function', function () {
+describe('#negate', () => {
+  it('is a function', () => {
     expect(_.negate).to.be.a('function');
   });
-  it('swaps true to false and false to true',function() {
+  it('swaps true to false and false to true',() => {
     function truthy(){
       return true;
     }
@@ -511,16 +511,25 @@ describe('#negate', function () {
     }
     expect(_.negate(falsey)).to.equal(true);  // falsey is fn
   });
-  it('returns a undefined', function () {
+  it('returns a undefined', () => {
     expect(_.negate(2)).to.equal(undefined); // 2 is fn
 })
 });
+// describe('#shuffle', () => {
+//   it('is a function', () => {
+//     expect(_.shuffle).to.be.a('function');
+//   });
+//   it('should return an array the same length as the input array', () => {
+//     expect(_.shuffle([1,2,3]).length).to.equal(3);
+//   });
+
+
   });
 })
 
 })
 })
 })
+})
 
-});
 

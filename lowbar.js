@@ -202,11 +202,15 @@ _.pluck = function(list, propName) {
     return true;
   };
 
-  // _.negate = function(predicate) {
-  //   return function() {
-  //     return !predicate.apply(this, arguments);
-  //   };
-  // };
+  _.shuffle = function (list) {
+    if (typeof list !== 'object') return [];
+    var useArray = [];
+    if (Array.isArray(list) === false) {
+      for (let key in list) {
+        useArray.push(list[key]);
+      }
+    }
+  }
 
 
 
