@@ -228,7 +228,14 @@ _.pluck = function(list, propName) {
     return useArray;
   };
 
-
-
+_.invoke = (list, method, arguement) => {
+  return _.map(list, item => {
+    if (typeof(method) === "function") {
+      return method.apply(item, arguement);
+    } else {
+      return item[method].apply(item, arguement);
+    }
+  });
+};
 
 module.exports = _;

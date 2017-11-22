@@ -539,13 +539,29 @@ it('returns a shuffled copy of the original list', () => {
 });
   
 
-
-  });
+describe('#shuffle', () => {
+  it('it returns an empty array if not given a valid list', () => {
+    expect(_.invoke()).to.eql([]);
+    expect(_.invoke([])).to.eql([]);
+    expect(_.invoke({})).to.eql([]);
+    expect(_.invoke(222)).to.eql([]);
 })
 
-})
-})
+it('it calls the method on objects, arrays and strings', () => {
+  expect(_.invoke([[2, 8, 6, 4], [3, 2, 1]], 'sort')).to.eql([[2, 4, 6, 8], [1, 2, 3]]);
+
+  expect(_.invoke({a: [2, 8, 6, 4], b: [3, 2, 1]}, 'sort')).to.eql([[2, 4, 6, 8], [1, 2, 3]]);
+ 
+  expect(_.invoke(['abc'],'toUpperCase')).to.eql(['ABC']);
+
+  expect(_.invoke(['FRANCIS'],'concat', ['BROUGHTON'])).to.eql(['FRANCISBROUGHTON']);
 })
 })
 
 
+})
+})
+})
+})
+})
+})
