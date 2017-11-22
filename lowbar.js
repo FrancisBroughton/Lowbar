@@ -238,4 +238,12 @@ _.invoke = (list, method, arguement) => {
   });
 };
 
+_.sortBy = (list, iteratee) => {
+  	let result = _.map(list); 
+  return result.sort((a,b) => {
+  	return iteratee(a)-iteratee(b);
+  	});
+  }
+  
+
 module.exports = _;
