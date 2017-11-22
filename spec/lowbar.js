@@ -483,6 +483,19 @@ describe('#default', () => {
     expect(_.extend({name: 'Francis'},{surname: 'broughton'}, [11])).to.eql({name: 'Francis',surname: 'broughton'}); 
 });
 });
+///////////////////////
+describe('#once', function () {
+  it('is a function', function () {
+    expect(_.once).to.be.a('function');
+  });
+  it('only calls the function once', function() {
+    let spy = sinon.spy();
+    var hi = _.once(spy);
+    hi;
+    hi;
+    expect(spy.callCount).to.equal(1);
+  });
+});
 })
 
 

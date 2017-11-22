@@ -187,6 +187,15 @@ _.pluck = function(list, propName) {
     return Object.assign({}, defaults, object);
   };
 
+  _.once = function (func) {
+    let flag = false;
+    if (flag === false){
+      flag = true;
+      var cache = func();
+      return cache;
+    }
+  };
+
 
 
 module.exports = _;
