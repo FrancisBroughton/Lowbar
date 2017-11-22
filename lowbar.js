@@ -204,13 +204,29 @@ _.pluck = function(list, propName) {
 
   _.shuffle = function (list) {
     if (typeof list !== 'object') return [];
-    var useArray = [];
+    let useArray = [];
     if (Array.isArray(list) === false) {
       for (let key in list) {
         useArray.push(list[key]);
       }
+    } else {
+      useArray = list;
     }
-  }
+    
+    let unsortedEl = useArray.length;
+    let temp;
+    let randomEl;
+  
+    while (unsortedEl > 0) {
+      randomEl = Math.floor(Math.random() * unsortedEl);
+      unsortedEl--;
+  
+      temp = useArray[unsortedEl];
+      useArray[unsortedEl] = useArray[randomEl];
+      useArray[randomEl] = temp;
+    }
+    return useArray;
+  };
 
 
 

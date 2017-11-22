@@ -515,13 +515,29 @@ describe('#negate', () => {
     expect(_.negate(2)).to.equal(undefined); // 2 is fn
 })
 });
-// describe('#shuffle', () => {
-//   it('is a function', () => {
-//     expect(_.shuffle).to.be.a('function');
-//   });
-//   it('should return an array the same length as the input array', () => {
-//     expect(_.shuffle([1,2,3]).length).to.equal(3);
-//   });
+
+describe('#shuffle', () => {
+  it('should return an array the same length as the input array', function () {
+    expect(_.shuffle([1,2,3]).length).to.equal(3);
+  });
+  it('should return an array the same length as the input object', function () {
+    expect(_.shuffle({a: 1, b: 2}).length).to.equal(2);
+  });
+  it('is returning the same type when only one type is passed', function () {
+    expect(typeof _.shuffle(['ab','cd','ef'])[0]).to.equal('string');
+  });
+  it('it returns an empty array when not given a valid list', () => {
+    expect(_.shuffle()).to.eql([]);
+    expect(_.shuffle([])).to.eql([]);
+    expect(_.shuffle({})).to.eql([]);
+    expect(_.shuffle(1234)).to.eql([]);
+});
+it('returns a shuffled copy of the original list', () => {
+  expect(_.shuffle('francis')).to.not.eql('francis');
+  expect(_.shuffle({0:1, 1:2, 2:3})).to.not.eql({0:1, 1:2, 2:3});
+});
+});
+  
 
 
   });
