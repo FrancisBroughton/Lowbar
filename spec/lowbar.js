@@ -558,19 +558,31 @@ it('it calls the method on objects, arrays and strings', () => {
 })
 })
 
-describe('#sortBy', () => {
-  it('returns an empty array for invalid argument', () => {
-    expect(_.sortBy(555)).to.eql([]);
-    expect(_.sortBy(undefined)).to.eql([]);
-    expect(_.sortBy([])).to.eql([]);			
-    expect(_.sortBy({})).to.eql([]);			
+// describe('#sortBy', () => {
+//   it('returns an empty array for invalid argument', () => {
+//     expect(_.sortBy(555)).to.eql([]);
+//     expect(_.sortBy(undefined)).to.eql([]);
+//     expect(_.sortBy([])).to.eql([]);			
+//     expect(_.sortBy({})).to.eql([]);			
+//   });
+
+describe('#zip', () => {
+  
+  it('should merge arrays together based on index position of equal length', () => {
+    let actual = _.zip(['moe', 'larry', 'curly'], [30, 40, 50], [true, false, false]);
+    let expected = [['moe', 30, true], ['larry', 40, false], ['curly', 50, false]];
+    expect(actual).to.eql(expected);
   });
+  it('returns an array with elements that are undefined when number and dimension of arrays do not match', () => {
+    expect(_.zip([1,2,3], ['a', 'b'])).to.eql([[1,'a'], [2, 'b'], [3, undefined]]);
+});
 
+  });
+});
+})
 
 })
 })
 })
 })
-})
-})
-})
+

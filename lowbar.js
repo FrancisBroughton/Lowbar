@@ -238,12 +238,41 @@ _.invoke = (list, method, arguement) => {
   });
 };
 
-_.sortBy = (list, iteratee) => {
-  	let result = _.map(list); 
-  return result.sort((a,b) => {
-  	return iteratee(a)-iteratee(b);
-  	});
-  }
+// _.sortBy = (list, iteratee) => {
+//   	let result = _.map(list); 
+//   return result.sort((a,b) => {
+//   	return iteratee(a)-iteratee(b);
+//   	});
+//   }
   
+_.zip = function (arr) {
+
+    let results = [];
+    for (var i = 0; i < arguments[0].length; i++) {
+        let tempResults = [];
+        for (var j = 0; j < arguments.length; j++) {
+            tempResults.push(arguments[j][i]);
+        }
+        results.push(tempResults);
+    }
+    return results;
+};
+
+
+//   let array = {};
+//   let list = Object.values(arguments);
+//   if(list.length === 0){return [];}
+//   if(list.length === 1){return array;}
+//   _.each(list, (item) => {
+//       _.each(item, (element, i) => {
+//           if (!array[i]) { 
+//             array[i] = []; }
+//           array[i].push(element);
+//       });
+//   });
+//   return Object.values(array);
+
+// };
+
 
 module.exports = _;
