@@ -196,6 +196,19 @@ _.pluck = function(list, propName) {
     }
   };
 
+  _.negate = function (predicate) {
+    if(typeof predicate !== 'function') return undefined;
+    if (predicate() === true) return false;
+    return true;
+  };
+
+  // _.negate = function(predicate) {
+  //   return function() {
+  //     return !predicate.apply(this, arguments);
+  //   };
+  // };
+
+
 
 
 module.exports = _;

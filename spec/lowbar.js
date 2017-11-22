@@ -496,9 +496,26 @@ describe('#once', function () {
     expect(spy.callCount).to.equal(1);
   });
 });
+
+describe('#negate', function () {
+  it('is a function', function () {
+    expect(_.negate).to.be.a('function');
+  });
+  it('swaps true to false and false to true',function() {
+    function truthy(){
+      return true;
+    }
+    expect(_.negate(truthy)).to.equal(false); // truthy is fn
+    function falsey(){
+      return false;
+    }
+    expect(_.negate(falsey)).to.equal(true);  // falsey is fn
+  });
+  it('returns a undefined', function () {
+    expect(_.negate(2)).to.equal(undefined); // 2 is fn
 })
-
-
+});
+  });
 })
 
 })
