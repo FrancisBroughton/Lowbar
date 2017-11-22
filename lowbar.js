@@ -258,20 +258,48 @@ _.zip = function (arr) {
     return results;
 };
 
+_.flatten = (array, shallow) => {
+  let result = []
+  if (!Array.isArray(array) && typeof array !== 'string') return [];
+  if (!shallow) {
+  _.each(array, function(el) {
+      if (Array.isArray(el))
+          array = _.flatten([].concat.apply([], array));
+  });
+  }
+  array = [].concat.apply([], array)
+  return array;
+}
+  
 
-//   let array = {};
-//   let list = Object.values(arguments);
-//   if(list.length === 0){return [];}
-//   if(list.length === 1){return array;}
-//   _.each(list, (item) => {
-//       _.each(item, (element, i) => {
-//           if (!array[i]) { 
-//             array[i] = []; }
-//           array[i].push(element);
+
+// _.flatten = (array, shallow) => {
+//   if (!Array.isArray(array) && typeof array !== 'string') return [];
+//   if (!shallow) {
+//       _.each(array, (el) => {
+//           if (Array.isArray(el)) array = _.flatten([].concat.apply([], array));
 //       });
-//   });
-//   return Object.values(array);
+//   }
+//   array = [].concat.apply([], array);
+//   return array;
+//  };
 
+// _.flatten = (list, shallow = false) => {
+//   const result = [];
+//   if (!Array.isArray(list) && typeof list !== 'string') return result;
+
+//   const innerFunction = (list) => {
+//       _.each(list, item => {
+//           if (!Array.isArray(item)) result.push(item);
+//           else {
+//               if (shallow) result.push(...item);
+//               else return innerFunction(item);
+//           }
+//       });
+//       return result;
+//   };
+
+//   return innerFunction(list);
 // };
 
 
