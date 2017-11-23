@@ -586,16 +586,12 @@ describe('#zip', () => {
         expect(_.flatten()).to.eql([]);
         expect(_.flatten({a:[2,2,2]})).to.eql([]);
     });
-    // it('returns a flattened array', () => {
-    //   let input = [2, [4], [6, [[8]]]];
-    //   let expected = ([2,4,6,8]);
-    //   expect(_.flatten(input).to.eql(expected))
-    // });
-    // it('returns a flattened array which has different elements', () => {
-    //   let input = [2, {a:2}, [2, [3, 'Feb', {c: 2}]]];
-    //   let expected = [2,{a:2}, 2, 3, 'Feb', {c: 2}];
-    //   expect(_.flatten(input).to.eql(expected))
-    // });
+    it('returns a flattened array', () => {
+      expect(_.flatten([2, [4], [6, [[8]]]])).to.eql([2,4,6,8]);
+    })
+    it('returns a flattened array with objects, strings & arrays', () => {
+      expect(_.flatten([{name: 'Francis'}, 'Broughton', ['became a developer', [{b: 2017}]]])).to.eql([{name: 'Francis'}, 'Broughton', 'became a developer', {b: 2017}]);
+    })
     it('returns an array flattened to one level if given true for shallow argument', () => {
         expect(_.flatten([1, [2], [3, [[4]]]], true)).to.eql([1, 2, 3, [[4]]]);
         expect(_.flatten([1,2,3,[4,[5,[6]]]],true)).to.eql([1,2,3,4,[5,[6]]])
