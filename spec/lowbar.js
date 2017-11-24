@@ -578,8 +578,8 @@ describe('#zip', () => {
 });
   });
 
-  describe('#flatten', () => {
-    it('returns an empty array when not given a string or array', () => {
+describe('#flatten', () => {
+  it('returns an empty array when not given a string or array', () => {
         expect(_.flatten(1)).to.eql([]);
         expect(_.flatten(false)).to.eql([]);
         expect(_.flatten(undefined)).to.eql([]);    
@@ -599,9 +599,14 @@ describe('#zip', () => {
 });
 
 
+
+
+
+
 })
 })
 })
 })
 })
 })
+

@@ -269,38 +269,7 @@ _.flatten = (array, shallow) => {
   }
   array = [].concat.apply([], array)
   return array;
-}
-  
-
-
-// _.flatten = (array, shallow) => {
-//   if (!Array.isArray(array) && typeof array !== 'string') return [];
-//   if (!shallow) {
-//       _.each(array, (el) => {
-//           if (Array.isArray(el)) array = _.flatten([].concat.apply([], array));
-//       });
-//   }
-//   array = [].concat.apply([], array);
-//   return array;
-//  };
-
-// _.flatten = (list, shallow = false) => {
-//   const result = [];
-//   if (!Array.isArray(list) && typeof list !== 'string') return result;
-
-//   const innerFunction = (list) => {
-//       _.each(list, item => {
-//           if (!Array.isArray(item)) result.push(item);
-//           else {
-//               if (shallow) result.push(...item);
-//               else return innerFunction(item);
-//           }
-//       });
-//       return result;
-//   };
-
-//   return innerFunction(list);
-// };
+};
 
 
 module.exports = _;
