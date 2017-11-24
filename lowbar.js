@@ -272,4 +272,17 @@ _.flatten = (array, shallow) => {
 };
 
 
+_.intersection = function () {
+  let identicalArray = [];
+  for (let i = 1; i < arguments.length; i++) {
+      for (let j = 0; j < arguments[0].length; j++) {
+          if (arguments[i].indexOf(arguments[0][j]) !== -1 && identicalArray.indexOf(arguments[0][j]) === -1) {
+                  identicalArray.push(arguments[0][j]);
+          }
+      }
+  }
+  return identicalArray;
+}
+
+
 module.exports = _;

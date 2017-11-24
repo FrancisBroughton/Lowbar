@@ -598,15 +598,38 @@ describe('#flatten', () => {
     });
 });
 
+describe('#intersection',() => {
+  it('returns an array of intersection results', () => {
+    expect(_.intersection([1, 2, 3], [101, 2, 1, 10], [2, 1])).to.eqls([1,2]);
+    expect(_.intersection([[1], 2, 3], [101, 2, 1, 10], [2, 1])).to.eqls([2]);
+  })
+  
+  it('returns an array of intersection results for characters', () => {
+    expect(_.intersection('a', 'ab', 'abc')).to.eql(['a'])
+    expect(_.intersection('fran', 'franke', 'franny', 'francis')).to.eqls(['f','r','a','n']);
+})
+  it('returns an array of interected results for when there are objects/array', () => {
+  expect(_.intersection(['fran', 'b', {a:22222}], ['b',2989,4,'fran'], ['fran',2,9, 'b'])).to.eql(['fran', 'b']); 
+  })
+  
+  it('return [] for invalid input', function () {
+    expect(_.intersection(234)).to.eqls([]);
+    expect(_.intersection({})).to.eqls([]);
+    expect(_.intersection([])).to.eqls([]);
+    expect(_.intersection(null)).to.eqls([]);
+
+  });
+});
 
 
 
 
 
+
 })
 })
 })
 })
 })
-})
+});
 
