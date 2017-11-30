@@ -317,4 +317,20 @@ _.memoize = (func) => {
       return cache[args] = (args in cache) ? cache[args] : func.apply(this, args);
   };
 }
+
+
+// _.delay = (func, wait) => {
+//   let arg = [];
+//   for (var i = 2; i < arguments.length; i++) {
+//       args.push(arguments[i]);
+//   }
+//   function doSomething () {
+//       return func.apply(null, args);
+//   }
+//   setTimeout(doSomething, wait);
+// };
+_.delay = function(func, wait, ...args) {
+  return setTimeout(func, wait, ...args); 
+};
+
 module.exports = _;
