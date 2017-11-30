@@ -299,5 +299,22 @@ _.difference = function (firstArr, secArr) {
   return diff;
 };
 
+// _.memoize = (func) => {
+//   let cache = {};
+//   return () => {
+//       if (cache[arguments[0]]) return cache[arguments[0]];
+//       else {
+//           cache[arguments[0]] = func(arguments[0]);
+//           return cache[arguments[0]];
+//       }
+//   };
+// };
 
+_.memoize = (func) => {
+  const cache = {};
+  return function() {
+      const args = [].slice.call(arguments);
+      return cache[args] = (args in cache) ? cache[args] : func.apply(this, args);
+  };
+}
 module.exports = _;

@@ -635,10 +635,35 @@ describe('_.difference', () => {
 });
 
 
+describe('#memoize', () => {
+  it('returns a function', () => {
+      expect(_.memoize()).to.be.a('function');
+  });
+  it('returns a function that behaves the same way as the function passed', () => {
+    const name = () => 'francis';
+    const memName = _.memoize(name);
+    expect(memName()).to.equal('francis');
+  });
+  it('it will only run the function once if ', () => {
+    const spy = sinon.spy();
+    var memoizedSpy = _.memoize(spy);
+    memoizedSpy();
+    memoizedSpy();
+    expect(spy.callCount).to.equal(1);
+});
+it('calls the function multiple times if passed different arguments', () => {
+  let counter = 0;
+  const updateCounter = (num) => counter += num;
+  const memoizeUpdateCounter = _.memoize(updateCounter);
+  memoizeUpdateCounter(1);
+  memoizeUpdateCounter(2);
+  memoizeUpdateCounter(3);
+  expect(counter).to.equal(6);
+});
 
 
 
-
+})
 })
 })
 })
