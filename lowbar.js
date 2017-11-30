@@ -284,5 +284,20 @@ _.intersection = function () {
   return identicalArray;
 }
 
+_.difference = function (firstArr, secArr) {
+  var diff = [];
+    for (var i = 0; i < firstArr.length; i++) {
+    if (secArr.indexOf(firstArr[i]) === -1) {
+      diff.push(firstArr[i]);
+    }
+  }
+  for (i = 0; i < secArr.length; i++) {
+    if (firstArr.indexOf(secArr[i]) === -1) {
+      diff.push(secArr[i]);
+    }
+  }
+  return diff;
+};
+
 
 module.exports = _;

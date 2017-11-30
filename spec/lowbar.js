@@ -611,13 +611,26 @@ describe('#intersection',() => {
   it('returns an array of interected results for when there are objects/array', () => {
   expect(_.intersection(['fran', 'b', {a:22222}], ['b',2989,4,'fran'], ['fran',2,9, 'b'])).to.eql(['fran', 'b']); 
   })
-  
+
   it('return [] for invalid input', function () {
     expect(_.intersection(234)).to.eqls([]);
     expect(_.intersection({})).to.eqls([]);
     expect(_.intersection([])).to.eqls([]);
     expect(_.intersection(null)).to.eqls([]);
 
+  });
+});
+
+describe('_.difference', () => {
+  it('will return the difference between two arrays', () => {
+    expect(_.difference([1, 2, 3], [2, 15, 20])).to.eql([1, 3, 15, 20]);
+  });
+  it('should return the difference between arrays containing strings', () => {
+    expect(_.difference(['francis', 'Damian', 'Broughton'], ['francis', 'Damian', 'Oakley'])).to.eql(['Broughton', 'Oakley']);
+  });
+  it('should return the difference between arrays containing different data types', () => {
+    var difference = _.difference(['Francis', 'Damian', '2/2/1989'], ['Damian', '2/2/1989', 2, 2, 1989]);
+    expect(difference).to.eql(['Francis', 2,2,1989]);
   });
 });
 
