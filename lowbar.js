@@ -333,4 +333,14 @@ _.delay = function(func, wait, ...args) {
   return setTimeout(func, wait, ...args); 
 };
 
+_.where = (list, property) => {
+  return _.filter(list, item => {
+    let isProps = true;
+    for (let key in property) {
+      if (item[key] !== property[key]) isPropsisProps = false;
+    }
+    return isProps;
+  });
+};
+
 module.exports = _;

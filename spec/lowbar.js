@@ -216,7 +216,7 @@ describe('#uniq', () => {
   });
   });
 
-describe('_.map', () => {
+describe('#map', () => {
   it('returns an empty object if first argument it not a valid input', () => {
     expect(_.map(false)).to.eql([]);
     expect(_.map(135465)).to.eql([]);
@@ -621,7 +621,7 @@ describe('#intersection',() => {
   });
 });
 
-describe('_.difference', () => {
+describe('#difference', () => {
   it('will return the difference between two arrays', () => {
     expect(_.difference([1, 2, 3], [2, 15, 20])).to.eql([1, 3, 15, 20]);
   });
@@ -662,7 +662,7 @@ it('calls the function multiple times if passed different arguments', () => {
 });
 })
 
-describe('delay', () => {
+describe('#delay', () => {
   it('exists', () => {      
       expect(_.delay).to.be.a('function');
     });
@@ -684,7 +684,15 @@ describe('delay', () => {
         }, 1001);
       });
 
-
+describe('#where', () => {
+        it('it is a function', () => {
+            expect(_.where).to.be.a('function');
+        });
+        // it('returns an array from the string containing the properties passed', () => {
+        //   expect(_.where('abc', {0: 'a'})).to.eql(['a']);
+        //   expect(_.where('abc', {0: 'b'})).to.eql(['b']);
+        //   expect(_.where('abc', {0: 'c'})).to.eql(['c']);
+        // });
       
 })
 })
@@ -692,4 +700,5 @@ describe('delay', () => {
 })
 });
 });
+})
 })
