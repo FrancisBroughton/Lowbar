@@ -695,10 +695,93 @@ describe('#delay', () => {
     }, 1001);
   });
 
-describe('#where', () => {
-        it('it is a function', () => {
-            expect(_.where).to.be.a('function');
-        });
+  describe('#where', () => {
+    it('returns empty array if invalid argument is passed', () => {
+			expect(_.where(5)).to.eql([]);
+			expect(_.where([])).to.eql([]);
+			expect(_.where({})).to.eql([]);
+    });
+    
+    it('returns an array when given a string', () => {
+      expect(_.where('f')).to.eql(['f']);
+      expect(_.where('fran')).to.eql(['f','r','a','n']);
+    });
+
+    it('returns an array from the string containing the properties passed', () => {
+      expect(_.where('abc', {0: 'a'})).to.eql(['a']);
+      expect(_.where('abc', {0: 'b'})).to.eql(['b']);
+      expect(_.where('abc', {0: 'c'})).to.eql(['c']);
+    });
+
+    it('returns array of objects which have the properties passed as second argument', () => {
+      let input = [
+        {a:2, b:3, c:4}, 
+        {a:'francis', b:'broughton'}, 
+        {a:2, b:3, d:4}, 
+        {c:2, d:8},
+        {a: 'francis', b: 'broughton'}
+      ];
+      let expectedOne = [
+        {a:2, b:3, c:4},
+        {a:2, b:3, d:4}
+      ];
+    expect(_.where(input, {a:2, b:3})).to.eql(expectedOne);
+    });
+   
+    it('returns an array from the array containing the properties passed', () => {
+      const list = [
+        {
+          name: 'Claude',
+          age: 3,
+          gender: 'male',
+          animal: 'rabbit'
+        },
+        {
+          name: 'Marcelle',
+          age: 3,
+          gender: 'male',
+          animal: 'rabbit'
+        },
+        {
+          name: 'Tallulah',
+          age: 1,
+          gender: 'female',
+          animal: 'cat'
+        },
+        {
+          name: 'Finn',
+          age: 1,
+          gender: 'male',
+          animal: 'cat'
+        }
+      ];
+      expect(_.where(list, {gender: 'female'})).to.eql([
+        {
+          name: 'Tallulah',
+          age: 1,
+          gender: 'female',
+          animal: 'cat'
+        }
+      ]);
+      expect(_.where(list, {age: 3})).to.eql([{
+          name: 'Claude',
+          age: 3,
+          gender: 'male',
+          animal: 'rabbit'
+        },
+        {
+          name: 'Marcelle',
+          age: 3,
+          gender: 'male',
+          animal: 'rabbit'
+        }]);
+    });
+    it('returns empty array if invalid argument is passed', () => {
+			expect(_.where(5)).to.eql([]);
+			expect(_.where([])).to.eql([]);
+			expect(_.where({})).to.eql([]);
+		});
+  });
        
       
       
@@ -709,4 +792,4 @@ describe('#where', () => {
 });
 });
 })
-})
+

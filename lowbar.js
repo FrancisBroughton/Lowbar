@@ -311,25 +311,25 @@ _.delay = function(func, wait, ...args) {
   return setTimeout(func, wait, ...args); 
 };
 
-// _.where = (list, property) => {
-//   return _.filter(list, item => {
-//     let isProps = true;
-//     for (let key in property) {
-//       if (item[key] !== property[key]) isPropsisProps = false;
-//     }
-//     return isProps;
-//   });
-// };
-
-_.where = (list, properties) => {
-  
-return _.filter(list, item => {
-  let flag = true;
-  for (let key in properties) {
-    if (item[key] !== properties[key]) flag = false; 
-  }
-  return flag;
-});
+_.where = (list, property) => {
+  return _.filter(list, item => {
+    let isProps = true;
+    for (let key in property) {
+      if (item[key] !== property[key]) isProps = false;
+    }
+    return isProps;
+  });
 };
+
+// _.where = (list, properties) => {
+  
+// return _.filter(list, item => {
+//   let flag = true;
+//   for (let key in properties) {
+//     if (item[key] !== properties[key]) flag = false; 
+//   }
+//   return flag;
+// });
+// };
 
 module.exports = _;
