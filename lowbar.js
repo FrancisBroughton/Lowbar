@@ -44,20 +44,7 @@ _.each = function(list, iteratee, context = this) {
   }
   return list;
 }
-
-// _.indexOf = function (array, value, fromIndex) {
-//   if (!array) {
-//     return -1;
-//   }
-//   if (fromIndex === true) {
-//   }
-//   if (array.indexOf(value) > 0) {
-//     return array.indexOf(value);
-//     }
-//   return -1
-//   }
-
-
+ 
 _.filter = function(arr, predicate, context = this) {
   if(!predicate) return arr;
   let newArr = [];
@@ -228,6 +215,7 @@ _.pluck = function(list, propName) {
     return useArray;
   };
 
+
 _.invoke = (list, method, arguement) => {
   return _.map(list, item => {
     if (typeof(method) === "function") {
@@ -246,8 +234,7 @@ _.invoke = (list, method, arguement) => {
 //   }
   
 _.zip = function (arr) {
-
-    let results = [];
+  let results = [];
     for (var i = 0; i < arguments[0].length; i++) {
         let tempResults = [];
         for (var j = 0; j < arguments.length; j++) {
@@ -284,6 +271,8 @@ _.intersection = function () {
   return identicalArray;
 }
 
+
+
 _.difference = function (firstArr, secArr) {
   var diff = [];
     for (var i = 0; i < firstArr.length; i++) {
@@ -318,29 +307,29 @@ _.memoize = (func) => {
   };
 }
 
-
-// _.delay = (func, wait) => {
-//   let arg = [];
-//   for (var i = 2; i < arguments.length; i++) {
-//       args.push(arguments[i]);
-//   }
-//   function doSomething () {
-//       return func.apply(null, args);
-//   }
-//   setTimeout(doSomething, wait);
-// };
 _.delay = function(func, wait, ...args) {
   return setTimeout(func, wait, ...args); 
 };
 
-_.where = (list, property) => {
-  return _.filter(list, item => {
-    let isProps = true;
-    for (let key in property) {
-      if (item[key] !== property[key]) isPropsisProps = false;
-    }
-    return isProps;
-  });
+// _.where = (list, property) => {
+//   return _.filter(list, item => {
+//     let isProps = true;
+//     for (let key in property) {
+//       if (item[key] !== property[key]) isPropsisProps = false;
+//     }
+//     return isProps;
+//   });
+// };
+
+_.where = (list, properties) => {
+  
+return _.filter(list, item => {
+  let flag = true;
+  for (let key in properties) {
+    if (item[key] !== properties[key]) flag = false; 
+  }
+  return flag;
+});
 };
 
 module.exports = _;
