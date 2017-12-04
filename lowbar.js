@@ -321,15 +321,6 @@ _.where = (list, property) => {
   });
 };
 
-// _.where = (list, properties) => {
-  
-// return _.filter(list, item => {
-//   let flag = true;
-//   for (let key in properties) {
-//     if (item[key] !== properties[key]) flag = false; 
-//   }
-//   return flag;
-// });
-// };
+
 
 module.exports = _;
