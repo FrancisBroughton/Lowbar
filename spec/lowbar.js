@@ -69,7 +69,6 @@ describe('#last',() => {
         let input = [1, 2, 3, 4, 5];
         let n = 1
         expect(_.last(input)).to.equal(5);
-        console.log(input)
       });
 
       it('returns the nth element from the end of an array', () => {
