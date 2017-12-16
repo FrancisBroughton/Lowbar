@@ -25,6 +25,7 @@
     "eslint": "^3.19.0",
     "eslint-plugin-react": "^7.4.0",
     "husky": "^0.13.1",
+    "mocha": "^4.0.1",
     "sinon": "^3.3.0"
   }
 }
