@@ -165,7 +165,6 @@ describe('#filter', () => {
     expect(_.filter(['f', 'r', 'a', 'n'])).to.eql(['f', 'r', 'a', 'n']);
 });
 
-
 describe('#reject', () => {
   it('returns the values that are equal to false for numbers in the list', () => {
     expect(_.reject([1, 2, 3, 4, 5, 6], (num) => {
@@ -200,7 +199,6 @@ describe('#reject', () => {
   });
 });
 
-
 describe('#uniq', () => {
   it('returns an empty array if arguemnet passed is not a valid format', () => {
     expect(_.uniq(665)).to.eql([]);
@@ -213,7 +211,7 @@ describe('#uniq', () => {
     expect(_.uniq([1,3,4,1,2,2,4,3,5])).to.eql([1,3,4,2,5]);
     expect(_.uniq('ffrraanncciiss')).to.eql(['f','r','a','n','c','i','s']);
   });
-  });
+});
 
 describe('#map', () => {
   it('returns an empty object if first argument it not a valid input', () => {
@@ -797,7 +795,7 @@ describe('#where', () => {
   });
 });
 
-describe('_.throttle', () => {
+describe('#throttle', () => {
   beforeEach(() => {
     this.clock = sinon.useFakeTimers(); 
             
@@ -833,11 +831,37 @@ describe('_.throttle', () => {
     expect(doublThrottle(2)).to.equal(4);
   });
 });
-  
+
+describe('_.partial', () => {
+  it('returns function with arguments partially passed', () => {
+    const sub = (a, b) => b-a; 
+    const sub5 = _.partial(sub, 5); 
+    expect(sub5(20)).to.equal(15);
+  });
+  it('returns partial has same functionality as passed function when no second argument passed', () => {
+    const sub = (a, b) => b-a; 
+    const subPart = _.partial(sub); 
+    expect(subPart(5, 20)).to.equal(15);			
+  });
+  it('passing _ specifies argument should not be pre-filled in', () => {
+    const sub = (a, b) => b-a; 
+    const subPart = _.partial(sub, _, 20); 			
+    expect(subPart(5)).to.equal(15);
+  });
+  it('does not change this value of original function', () => {
+    const context = {no:20}; 
+    let sub = function (a) {
+      return this.no-a;
+    } 		
+    sub = sub.bind(context); 
+    const subPart = _.partial(sub); 	
+    expect(subPart(10)).to.equal(10);
+  });
+});
+});
        
       
       
-})
 })
 })
 
