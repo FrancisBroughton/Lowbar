@@ -123,7 +123,7 @@ describe('#each', () => {
     }
     _.each('francis', counter)
     expect(count).to.equal(7)
-  })
+  });
 
   it('counts the iteratee passed into an object', () => {
     let count = 0;
@@ -132,7 +132,7 @@ describe('#each', () => {
     }
     _.each({1:1, 2:2, 3:3}, counter)
     expect(count).to.equal(3)
-    })
+    });
 });
 
 
@@ -163,6 +163,7 @@ describe('#filter', () => {
 
   it('returns the array if there is no predicate', () => {
     expect(_.filter(['f', 'r', 'a', 'n'])).to.eql(['f', 'r', 'a', 'n']);
+  });
 });
 
 describe('#reject', () => {
@@ -832,22 +833,25 @@ describe('#throttle', () => {
   });
 });
 
-describe('_.partial', () => {
+describe('#partial', () => {
   it('returns function with arguments partially passed', () => {
     const sub = (a, b) => b-a; 
     const sub5 = _.partial(sub, 5); 
     expect(sub5(20)).to.equal(15);
   });
+
   it('returns partial has same functionality as passed function when no second argument passed', () => {
     const sub = (a, b) => b-a; 
     const subPart = _.partial(sub); 
     expect(subPart(5, 20)).to.equal(15);			
   });
+
   it('passing _ specifies argument should not be pre-filled in', () => {
     const sub = (a, b) => b-a; 
     const subPart = _.partial(sub, _, 20); 			
     expect(subPart(5)).to.equal(15);
   });
+
   it('does not change this value of original function', () => {
     const context = {no:20}; 
     let sub = function (a) {
@@ -859,11 +863,12 @@ describe('_.partial', () => {
   });
 });
 });
+});
        
       
       
-})
-})
+
+
 
 
 
