@@ -113,7 +113,6 @@ _.pluck = function(list, propName) {
   }
 
   _.contains = (input, value, fromIndex) => {
- 
       if(Array.isArray(input) || typeof input === "string") {
         for (let i = fromIndex; i < input.length; i++) {
           if (input[i] === value) {
@@ -265,8 +264,8 @@ _.intersection = function () {
 
 
 
-_.difference = function (firstArr, secArr) {
-  var diff = [];
+_.difference = (firstArr, secArr) => {
+  let diff = [];
     for (var i = 0; i < firstArr.length; i++) {
     if (secArr.indexOf(firstArr[i]) === -1) {
       diff.push(firstArr[i]);
@@ -280,26 +279,15 @@ _.difference = function (firstArr, secArr) {
   return diff;
 };
 
-// _.memoize = (func) => {
-//   let cache = {};
-//   return () => {
-//       if (cache[arguments[0]]) return cache[arguments[0]];
-//       else {
-//           cache[arguments[0]] = func(arguments[0]);
-//           return cache[arguments[0]];
-//       }
-//   };
-// };
-
-_.memoize = (func) => {
+_.memoize = function (func) {
   const cache = {};
-  return function() {
+  return () => {
       const args = [].slice.call(arguments);
       return cache[args] = (args in cache) ? cache[args] : func.apply(this, args);
   };
 }
 
-_.delay = function(func, wait, ...args) {
+_.delay = (func, wait, ...args) => {
   return setTimeout(func, wait, ...args); 
 };
 
@@ -311,7 +299,22 @@ _.where = (list, property) => {
     }
     return isProps;
   });
+};          
+
+_.throttle = (func, wait) => {
+  let callFunc = true; 
+  return function () {
+    if (callFunc) {
+      let res = func.apply(this, arguments);
+      callFunc = false; 
+      setTimeout(() => callFunc = true, wait); 
+      return res;
+    }
+  };
 };
+
+
+
 
 
 
